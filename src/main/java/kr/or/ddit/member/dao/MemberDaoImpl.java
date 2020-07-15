@@ -4,27 +4,20 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 
-import kr.or.ddit.ibatis.factory.SqlMapClientFactory;
 import kr.or.ddit.vo.MemberVO;
 
-public class MemberDaoImpl implements IMemberDao {
-	
-	private static IMemberDao dao;
-	
-	private SqlMapClient smc;
+// 설정파일 : <bean name="imemberDAOImpl"
+//				  class="kr.or.ddit.member.dao.IMemberImpl"/>
+@Repository
+public class MemberDaoImpl implements IMemberDao {	
 
-	public static IMemberDao getInstance(){
-		if(dao == null){
-			dao = new MemberDaoImpl();
-		}
-		return dao;
-	}
-	
-	public MemberDaoImpl() {
-		smc = SqlMapClientFactory.getSqlMapClient();
-	}
+	@Autowired
+	private SqlMapClient smc;
 	
 	@Override
 	public MemberVO memberInfo(Map<String, String> params) throws Exception{

@@ -3,26 +3,19 @@ package kr.or.ddit.member.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kr.or.ddit.member.dao.IMemberDao;
 import kr.or.ddit.member.dao.MemberDaoImpl;
 import kr.or.ddit.vo.MemberVO;
 
+// 설정파일 : <bean name = "iMemberServiceImpl"
+//			class="kr.or.ddit.member.service.IMemberServiceImpl"/>
+@Service
 public class MemberServiceImpl implements IMemberService {
-
-	// 싱글톤 패턴
-	private static IMemberService service;
+	@Autowired
 	private IMemberDao dao;
-
-	public static IMemberService getInstance() {
-		if (service == null) {
-			service = new MemberServiceImpl();
-		}
-		return service;
-	}
-
-	private MemberServiceImpl() {
-		dao = MemberDaoImpl.getInstance();
-	}
 
 	@Override
 	public MemberVO memberInfo(Map<String, String> params) {

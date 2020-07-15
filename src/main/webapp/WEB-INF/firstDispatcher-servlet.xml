@@ -28,9 +28,49 @@
 	 		   property - 해당 빈 내 전역변수의 setter를 대상으로 주입값 선언
 	 		   			    네임스페이스 p로 활용가능
 	 		   			    
-	 	어노테이션 : @Controller - 커맨드 컨트롤러 자격 부여 조건
-	 			  @RequestMapping - 클라이언트 요청시 서블릿 패스와 해당 요청을 처리하는 메서드(컨트롤러 메서드)와의 맵핑 조건
-	 			  	   
+	 	어노테이션 : @RequestMapping - 클라이언트 요청시 서블릿 패스와 해당 요청을 처리하는 메서드(컨트롤러 메서드)와의 맵핑 조건
+	 			  context:component-scan 선언으로 활용
+	 			  		@Controller - 커맨드 컨트롤러 자격 부여 조건, 컨트롤러 클래스 상단 선언으로 해당 클래스의 자동 빈 등록 처리
+	 			  		@Service - Service 레이어의 클래스 상단 선언으로 해당 클래스의 자동 빈 등록 처리
+	 			  		@Repository - DAO 레이어의 클래스 상단 선언으로 해당 클래스의 자동 빈 등록 처리
+	 			  		@Component - 기타 클래스 상단 선언으로 해당 클래스의 자동 빈 등록 처리
+	 			  	    *사용 가능 어노테이션 추가
+	 			  	      -JSR-250스펙(JDK6 버전부터 포함)
+	 			  	        @Required - setter 대상 필수 값 주입 선언(setter 상단 선언)
+	 			  	        @Value - 전역변수 상단 선언으로 properties 파일의 값을 주입
+	 			  	        @PreDestory - 빈 클래스가 GC(가비지컬렉터)되기 직전에 콜백되어야하는 메서드 상단 선언
+	 			  	   		@PostConstructor - 빈 클래스가 인스턴스화된 직후 콜백되어야하는 메서드 상단 선언
+	 			  	   		@Resource - IoC DI(Dependency Injection) 수행
+	 			  	   					선언 가능 영역 : 전역변수, 메서드 상단에 선언
+										빈 클래스의 인스턴스 주입 기준 : 타입을 기준으로 주입 처리
+						  -JSR-330스펙(JDK7버전부터 포함)
+						    @Inject - import java-inject-?.?.?.jar가 요구됨
+						    	    - IoC DI(Dependency Injection) 수행
+						    		    선언 가능 영역 : 전역변수, 생성자, 메서드 상단에 선언
+						    		    빈 클래스의 인스턴스 주입 기준 : 타입을 기준으로 주입 처리
+						  -스프링 프레임웤
+						    @AutoWired - IoC DI(Dependency Injection) 수행
+						    			 선언 가능 영역 : 전역변수, 생성자, 메서드 상단에 선언
+						    			 빈 클래스의 인스턴스 주입 기준 : 타입을 기준으로 주입 처리
+						    @Qualifire - @AutoWired와 동반 선언될수 있음
+						    			 타입이 중복되는 빈 클래스의 인스턴스 주입시 주입 대상 빈의 빈등록시 id 또는 name 속성값을 기준으로 주입 처리
+										 @Service
+										 class IMemberServiceImpl implements IMemberService extends IService()
+										 @Service
+										 class IFreeboardServiceImpl implements IFreeBoardService extends IService()
+										 					    			 			 
+						    			 @Component
+						    			 class A{
+											@AutoWired
+											@Qualifire("iMemberServiceImpl")
+						    			 	private IService service
+						    			 }	
+						    
+						    
+						    
+						    
+						    
+						    
 	 -->
 	<!-- 포워딩처리한다. -->
 <!-- 	<bean name="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
