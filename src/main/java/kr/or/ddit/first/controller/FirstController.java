@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 // 클라이언트의 요청을 실제 처리하는 커맨드 컨트롤러
-@Controller
+//@Controller
 public class FirstController implements ApplicationContextAware{
 	// http://localhost/SpringToddler/first/hello.first
 	

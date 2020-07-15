@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+//@Controller
 public class SecondController implements ApplicationContextAware {
 	/* public class SecondController{ */
 	// http://localhost/SpringToddler/second/hello.second

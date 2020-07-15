@@ -78,7 +78,7 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>	 -->
 	
-	<bean id="firstController" class="kr.or.ddit.first.controller.FirstController"></bean>
+<!-- 	<bean id="firstController" class="kr.or.ddit.first.controller.FirstController"></bean> -->
 	
 
 

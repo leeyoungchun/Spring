@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.fileupload.FileItem;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kr.or.ddit.fileitem.dao.FileItemDaoImpl;
 import kr.or.ddit.fileitem.dao.IFileItemDao;
@@ -13,20 +15,13 @@ import kr.or.ddit.utiles.AttachFileMapper;
 import kr.or.ddit.vo.FileItemVO;
 import kr.or.ddit.vo.FreeboardVO;
 
+// 설정파일 : <bean name="freeboardService" class="kr.or.ddit.freeboard.service.FreeboardServiceImpl"
+@Service("freeboardService")
 public class FreeboardServiceImpl implements IFreeboardService {
-
-	private static IFreeboardService service = new FreeboardServiceImpl();
+	@Autowired
 	private IFreeboardDao dao;
+	@Autowired
 	private IFileItemDao fileitemdao;
-	
-	private FreeboardServiceImpl(){
-		dao = FreeboardDaoImpl.getInstance();
-		fileitemdao = FileItemDaoImpl.getInstance();
-	}
-	
-	public static IFreeboardService getInstance(){
-		return (service == null) ? service : new FreeboardServiceImpl();
-	}
 	
 	@Override
 	public List<FreeboardVO> freeboardList(Map<String, String> params) {

@@ -12,5 +12,5 @@
 	</bean>	 -->
 	
 	
-	<bean id="secondController" class="kr.or.ddit.second.controller.SecondController"></bean>
+	<!-- <bean id="secondController" class="kr.or.ddit.second.controller.SecondController"></bean> -->
 </beans>

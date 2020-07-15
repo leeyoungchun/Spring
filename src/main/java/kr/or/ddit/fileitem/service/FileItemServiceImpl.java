@@ -3,21 +3,18 @@ package kr.or.ddit.fileitem.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
 import kr.or.ddit.fileitem.dao.FileItemDaoImpl;
 import kr.or.ddit.fileitem.dao.IFileItemDao;
 import kr.or.ddit.vo.FileItemVO;
 
+@Service("fileItemService")
 public class FileItemServiceImpl implements IFileItemService {
-	private static IFileItemService service = new FileItemServiceImpl();
+	@Autowired
 	private IFileItemDao dao;
-	
-	public FileItemServiceImpl(){
-		dao = FileItemDaoImpl.getInstance();
-	}
-	
-	public static IFileItemService getInstance(){
-		return (service == null)? service = new FileItemServiceImpl() : service;
-	}
 	
 	@Override
 	public void insertFileItem(List<FileItemVO> fileitemList){

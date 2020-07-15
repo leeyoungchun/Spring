@@ -3,24 +3,18 @@ package kr.or.ddit.fileitem.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.ddit.fileitem.dao.IFileItemDao;
-import kr.or.ddit.ibatis.factory.SqlMapClientFactory;
 import kr.or.ddit.vo.FileItemVO;
 
+@Repository("fileItemDAO")
 public class FileItemDaoImpl implements IFileItemDao {
-	private static IFileItemDao dao = new FileItemDaoImpl();
+	@Autowired
 	private SqlMapClient smc;
-	
-	private FileItemDaoImpl() {
-		smc = SqlMapClientFactory.getSqlMapClient();
-	
-	}
-	public static IFileItemDao getInstance(){
-		return (dao == null) ? dao = new FileItemDaoImpl() : dao;
-	}
-	
 	
 	@Override
 	public void insertFileItem(List<FileItemVO> fileitemList) throws Exception {
