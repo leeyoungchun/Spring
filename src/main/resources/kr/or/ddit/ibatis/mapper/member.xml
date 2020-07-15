@@ -53,10 +53,7 @@
            			   <include refid="searchCondition"/> 
            		 	   ) A
            		)B
-       <![CDATA[
-       WHERE B.RNUM <= #startCount#
-       	 AND B.RNUM >= #endCount#
-       ]]>	 
+     
 	</select>
 
 	<update id="deleteMember" parameterClass="Map">
