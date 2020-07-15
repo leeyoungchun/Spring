@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<!-- 
+		스프링 프레임웤 IoC(Inversion of Control : 역제어)
+			1. 스프링 프레임웤이 관리하는 설정파일 내 선언된 빈들의 인스턴스화 및 제공처 대상 인스턴스를 제공하기위한 스프링 프레임웤의 핵심 기능
+			2. 구분
+			   DL(Dependency Lookup) : 설정파일 내 선언된 빈이 해당 위치에 해당 이름으로 존재 여부 검증
+			   DI(Dependency Injection) : 설정파일 내 선언된 빈의 인스턴스를 제공처에 제공
+		커맨드 컨트롤러 : 클라이언트의 요청을 실제 처리하는 자원
+			         자격조건 - 설정파일 내 빈 등록 완료
+			                          해당 자원(커맨드 컨트롤러 클래스) 클래스 선언 상단부에 @Controller 선언 완료
+		
+		bean : id - 다른 빈과 구분을 위해 선언된 구분자(유니크)
+	 		   name -  1. 단독선언시 id속성과 동일한 의미가 부여
+	 		   		   2. id속성과 동반 선언되면 해당 id의 별명으로 활용
+	 		   class - 해당 자원이 배치된 패키지명과 자원명
+	 		   scope - default
+	 		   		      설정파일 내 선언된 빈의 인스턴스는 싱글톤 패턴을 적용해 관리되고 제공
+	 		   constructor-arg : 해당 빈의 생성자 대상 주입값 선언
+	 		   					  주입순서 = default 선언순서
+	 		   					  		  name 속성을 활용한 생성자의 특정 파라메터 선언명 맵핑
+	 		   					  		  index 속성을 활용한 생성자에 선언된 파라메터 선언순서 맵핑
+	 		   					  		  ref(reference) 속성을 활용해 설정파일 내 선언된 다른 빈(id속성값 또는 name속성값)의 인스턴스를 주입
+	 		   					 네임스페이스 c로 활용가능
+	 		   property - 해당 빈 내 전역변수의 setter를 대상으로 주입값 선언
+	 		   			    네임스페이스 p로 활용가능
+	 		   			    
+	 	어노테이션 : @Controller - 커맨드 컨트롤러 자격 부여 조건
+	 			  @RequestMapping - 클라이언트 요청시 서블릿 패스와 해당 요청을 처리하는 메서드(컨트롤러 메서드)와의 맵핑 조건
+	 			  	   
+	 -->
+	<!-- 포워딩처리한다. -->
+<!-- 	<bean name="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/user/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>	 -->
+	
+	<bean id="firstController" class="kr.or.ddit.first.controller.FirstController"></bean>
+	
+
+
+
+</beans>

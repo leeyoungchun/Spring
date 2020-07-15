@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<!-- 
+		public class InternalResourceViewResolver{
+			private String prefix;
+			private String suffix;
+			public void SetPrefix(String prefix){
+				this.prefix = prefix;
+			}
+			public void SetSuffix(String suffix){
+				this.suffix = suffix;
+			}
+		}
+	 -->
+
+
+	<bean name="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/user/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>	
+	
+<!-- 	<bean id="memberInfo" name="m1 m2 m3" class="kr.or.ddit.vo.MemberVO"
+		c:mem_id="a001" c:mem_name="김은대" c:mem_pass="asdfasdf"
+		p:mem_regno1="111111" p:mem_regno2="1111118">
+		<constructor-arg value="asdfasdf" name="mem_pass"></constructor-arg>
+			<constructor-arg value="a001" name="mem_id"></constructor-arg>
+ 		<constructor-arg value="asdfasdf" index="1"></constructor-arg>
+		<constructor-arg value="a001" index="0"></constructor-arg>
+		<constructor-arg value="김은대" index="2"></constructor-arg> 
+		<property name="mem_regno1" value="111111"></property>
+		<property name="mem_regno2" value="1111118"></property>
+		
+	</bean> -->
+	
+	
+</beans>
