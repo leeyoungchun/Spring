@@ -57,7 +57,7 @@
          		  FROM(<include refid="selectAll"/>
            			   <include refid="searchCondition"/> 
            		  ORDER BY BO_GROUP, BO_SEQ DESC) A) B
-       <![CDATA[
+    	<![CDATA[
        WHERE B.RNUM <= #startCount#
        	 AND B.RNUM >= #endCount#
        ]]>	 

@@ -19,10 +19,24 @@
 	 -->
 
 
-	<bean name="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"></property>
-		<property name="suffix" value=".jsp"></property>
+	<bean name="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+			p:prefix="/WEB-INF/views/" p:suffix=".jsp" p:order="3">
+		<!-- <property name="prefix" value="/WEB-INF/views/"></property>
+		<property name="suffix" value=".jsp"></property> -->
 	</bean>	
+	
+	<!-- 
+		컨트롤러 메서드 반환값이 AbstractView를 상속받은 view 클래스의 빈 등록시 id 또는 name 속성값일때 해당 View 클래스 접근 
+	 -->
+	<bean name="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"
+			p:order="2">
+	</bean>
+	
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+			p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView"
+			p:order="1">
+	</bean>
+	
 	
 <!-- 	<bean id="memberInfo" name="m1 m2 m3" class="kr.or.ddit.vo.MemberVO"
 		c:mem_id="a001" c:mem_name="김은대" c:mem_pass="asdfasdf"

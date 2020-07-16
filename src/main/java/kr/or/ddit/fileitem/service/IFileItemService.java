@@ -6,6 +6,6 @@ import java.util.Map;
 import kr.or.ddit.vo.FileItemVO;
 
 public interface IFileItemService {
-	public void insertFileItem(List<FileItemVO> fileitemList);
-	public FileItemVO fileitemInfo(Map<String, String> params);
+	public void insertFileItem(List<FileItemVO> fileitemList) throws Exception;
+	public FileItemVO fileitemInfo(Map<String, String> params)throws Exception;
 }

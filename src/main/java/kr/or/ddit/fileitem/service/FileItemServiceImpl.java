@@ -17,23 +17,18 @@ public class FileItemServiceImpl implements IFileItemService {
 	private IFileItemDao dao;
 	
 	@Override
-	public void insertFileItem(List<FileItemVO> fileitemList){
-		try {
+	public void insertFileItem(List<FileItemVO> fileitemList) throws Exception{
+		
 			dao.insertFileItem(fileitemList);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	@Override
-	public FileItemVO fileitemInfo(Map<String, String> params){
+	public FileItemVO fileitemInfo(Map<String, String> params) throws Exception{
 		FileItemVO fileitemInfo = null;
-		try {
-			fileitemInfo = dao.fileitemInfo(params);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return fileitemInfo;
+		
+		return 	fileitemInfo = dao.fileitemInfo(params);
+		
 	}
 
 }

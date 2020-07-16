@@ -19,7 +19,7 @@ $(function(){
 	});
 	
 	$('input[value=탈퇴]').click(function(){
-		$(location).attr('href', '${pageContext.request.contextPath}/user/member/deleteMemberInfo.do?mem_id=${memberInfo.mem_id}');
+		$(location).attr('href', '${pageContext.request.contextPath}/user/member/deleteMemberInfo/${memberInfo.mem_id}.do');
 	});
 	
 	$('input[value=로그아웃]').click(function(){

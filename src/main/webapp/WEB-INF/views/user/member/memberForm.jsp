@@ -18,7 +18,7 @@ function idCheck(){
 					alert(result.status);
 				},
 		success : function(result){
-					alert(result.flag);
+					alert(result.memberInfo.mem_id);
 				}
 	})
 }

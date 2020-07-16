@@ -22,84 +22,71 @@ public class FreeboardServiceImpl implements IFreeboardService {
 	private IFreeboardDao dao;
 	@Autowired
 	private IFileItemDao fileitemdao;
-	
+
 	@Override
-	public List<FreeboardVO> freeboardList(Map<String, String> params) {
+	public List<FreeboardVO> freeboardList(Map<String, String> params)
+			throws Exception {
 		List<FreeboardVO> freeboardList = null;
-		try {
-			freeboardList= dao.freeboardList(params);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return freeboardList;
+
+		return freeboardList = dao.freeboardList(params);
+
 	}
 
 	@Override
-	public String insertFreeboard(FreeboardVO freeboardInfo, FileItem[] items) {
+	public String insertFreeboard(FreeboardVO freeboardInfo, FileItem[] items)
+			throws Exception {
 		String bo_no = null;
-		try {
-			bo_no = dao.insertFreeboard(freeboardInfo);
-			List<FileItemVO> fileItemList =  AttachFileMapper.mapper(items, bo_no);
-			fileitemdao.insertFileItem(fileItemList);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	
+		bo_no = dao.insertFreeboard(freeboardInfo);
+		List<FileItemVO> fileItemList = AttachFileMapper.mapper(items, bo_no);
+		fileitemdao.insertFileItem(fileItemList);
+
+		return bo_no;
+	}
+	@Override
+	public String insertFreeboard(FreeboardVO freeboardInfo)
+			throws Exception {
+		String bo_no = null;
+		bo_no = dao.insertFreeboard(freeboardInfo);
 		
 		return bo_no;
 	}
 
 	@Override
-	public FreeboardVO freeboardInfo(Map<String, String> params){
+	public FreeboardVO freeboardInfo(Map<String, String> params)
+			throws Exception {
 		FreeboardVO freeboardInfo = null;
-		try {
-			freeboardInfo = dao.freeboardInfo(params);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return freeboardInfo;
+
+		return freeboardInfo = dao.freeboardInfo(params);
+
 	}
 
 	@Override
-	public void deleteFreeboard(Map<String, String> params) {
-		try {
-			dao.deleteFreeboard(params);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void deleteFreeboard(Map<String, String> params) throws Exception {
+		dao.deleteFreeboard(params);
+
 	}
 
 	@Override
-	public void updateFreeboard(FreeboardVO freeboardInfo) {
-		try {
-			dao.updateFreeboard(freeboardInfo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void updateFreeboard(FreeboardVO freeboardInfo) throws Exception {
+
+		dao.updateFreeboard(freeboardInfo);
+
 	}
 
-	
 	@Override
-	   public String insertFreeboardReply(FreeboardVO freeboardInfo) {
-	      String bo_no = null;
-	      try{
-	         bo_no = dao.insertFreeboardReply(freeboardInfo);
-	      }catch(Exception e){
-	         e.printStackTrace();
-	      }
-	      return bo_no ;
-	   }
+	public String insertFreeboardReply(FreeboardVO freeboardInfo)
+			throws Exception {
+		String bo_no = null;
+
+		return bo_no = dao.insertFreeboardReply(freeboardInfo);
+
+	}
 
 	@Override
-	public String totalCount(Map<String, String> params) {
+	public String totalCount(Map<String, String> params) throws Exception {
 		String totalCount = null;
-		try {
-			totalCount = dao.totalCount(params);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return totalCount;
+
+		return totalCount = dao.totalCount(params);
+
 	}
 }

@@ -2,7 +2,9 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
+	<welcom-file-list>
+		<welcome-file>/WEB-INF/views/user/welcome.jsp</welcome-file>
+	</welcom-file-list>
 	<!--  
 		서블릿 컨텍스트(DispatcherServlet) : 클라이언트의 요청을 처리하기위해 선언된 DispatcherServlet
 										 WebApplicationContext가 할당

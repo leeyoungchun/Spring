@@ -19,67 +19,47 @@ public class MemberServiceImpl implements IMemberService {
 	private IMemberDao dao;
 
 	@Override
-	public MemberVO memberInfo(Map<String, String> params) {
+	public MemberVO memberInfo(Map<String, String> params) throws Exception {
 		MemberVO memberInfo = null;
-		try {
-			memberInfo = dao.memberInfo(params);
-		} catch (Exception e) {
 
-			e.printStackTrace();
-		}
-		return memberInfo;
+		return memberInfo = dao.memberInfo(params);
 	}
-	
-	
+
 	@Override
-	public List<MemberVO> memberList(Map<String, String> params) {
+	public List<MemberVO> memberList(Map<String, String> params)
+			throws Exception {
 		List<MemberVO> memberList = null;
-		try{
-			memberList = dao.memberList(params);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		return memberList;
-	}
-	
-	@Override
-	public void deleteMemberInfo(Map<String, String> params) {
-		
-		try{
-			dao.deleteMemberInfo(params);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
+
+		return memberList = dao.memberList(params);
+
 	}
 
 	@Override
-	public void updateMemberInfo(MemberVO memberInfo) {
-		try{
-			dao.updateMemberInfo(memberInfo);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+	public void deleteMemberInfo(Map<String, String> params) throws Exception {
+
+		dao.deleteMemberInfo(params);
+
 	}
 
 	@Override
-	public void insertMemberInfo(MemberVO memberInfo) {
-		try{
-			dao.insertMemberInfo(memberInfo);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+	public void updateMemberInfo(MemberVO memberInfo) throws Exception {
+
+		dao.updateMemberInfo(memberInfo);
+
 	}
 
 	@Override
-	public String totalCount(Map<String, String> params) {
+	public void insertMemberInfo(MemberVO memberInfo) throws Exception {
+
+		dao.insertMemberInfo(memberInfo);
+
+	}
+
+	@Override
+	public String totalCount(Map<String, String> params) throws Exception {
 		String totalCount = null;
-		try {
-			totalCount = dao.totalCount(params);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return totalCount;
+
+		return totalCount = dao.totalCount(params);
+
 	}
 }

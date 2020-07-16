@@ -18,8 +18,8 @@
       		}
       		$('.loginBtn').click(function(){
       			var $frm = $('<form action="${pageContext.request.contextPath}/user/join/loginCheck.do" method="post"></form>');
-      			var $inputID = $('<input type="hidden" value="' +$('input[name=mem_id]').val()+ '" name="mem_id" />');
-      			var $inputPWD = $('<input type="hidden" value="' +$('input[name=mem_pass]').val()+ '" name="mem_pass" />');
+      			var $inputID = $('<input type="hidden" value="' +$('input[id=mem_id]').val()+ '" name="mem_id" />');
+      			var $inputPWD = $('<input type="hidden" value="' +$('input[id=mem_pass]').val()+ '" name="mem_pass" />');
       			$frm.append($inputID);
       			$frm.append($inputPWD);
                $(document.body).append($frm);
@@ -49,14 +49,14 @@
 								cellspacing="0">
 								<tr>
 									<td><b><spring:message code="cop.id"></spring:message></b></td>
-									<td><input type="text" name="mem_id" class="box" tabindex="3" height="18" /></td>
+									<td><input type="text" name="mem_id" id="mem_id" class="box" tabindex="3" height="18" /></td>
 									<td rowspan="2">
 										<img src="${pageContext.request.contextPath }/image/login.gif" class="loginBtn"/>
 									</td>
 								</tr>
 								<tr>
 									<td><b><spring:message code="cop.password"></spring:message> </b></td>
-									<td><input type="password" name="mem_pass" class="box" tabindex="3" height="18" /></td>
+									<td><input type="password" name="mem_pass" id="mem_pass" class="box" tabindex="3" height="18" /></td>
 								</tr>
 								<tr>
 									<td colspan="2">
