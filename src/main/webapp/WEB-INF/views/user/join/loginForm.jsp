@@ -3,12 +3,13 @@
 <%
 	String message =  request.getParameter("message");
 %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin.css" type="text/css">
-<title>회원관리 관리자 로그인</title>
+<title><spring:message code="cop.memberMngr.login"></spring:message> </title>
 	  <script type='text/javascript' src='http://code.jquery.com/jquery-latest.js'></script>
       <script type='text/javascript'>
       $(function(){
@@ -47,20 +48,20 @@
 							<table border="0" align="center" cellpadding="5"
 								cellspacing="0">
 								<tr>
-									<td><b>아이디</b></td>
+									<td><b><spring:message code="cop.id"></spring:message></b></td>
 									<td><input type="text" name="mem_id" class="box" tabindex="3" height="18" /></td>
 									<td rowspan="2">
 										<img src="${pageContext.request.contextPath }/image/login.gif" class="loginBtn"/>
 									</td>
 								</tr>
 								<tr>
-									<td><b>패스워드</b></td>
+									<td><b><spring:message code="cop.password"></spring:message> </b></td>
 									<td><input type="password" name="mem_pass" class="box" tabindex="3" height="18" /></td>
 								</tr>
 								<tr>
 									<td colspan="2">
-										아이디 저장 : <input type="checkbox" name="saveID" />
-										<a href='<%=request.getContextPath()%>/06/memberForm.jsp'>회원가입을 원하세요?</a>
+										<spring:message code="Check.saveID"></spring:message> <input type="checkbox" name="saveID" />
+										<a href='${pageContext.request.contextPath }/user/member/memberForm.do'><spring:message code="cop.registuser.msg"></spring:message> </a>
 									</td>
 								</tr>
 							</table>

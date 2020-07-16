@@ -4,17 +4,21 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.vo.FreeboardVO;
 import kr.or.ddit.vo.MemberVO;
 
+import org.hibernate.validator.engine.MessageAndPath;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,7 +30,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MemberController {
 	@Autowired
 	private IMemberService service;
-	
+	@Autowired
+	private MessageSourceAccessor accessor;
 	
 	@RequestMapping("memberList")
 	public Model memberList(String search_keycode, String search_keyword
@@ -42,6 +47,7 @@ public class MemberController {
 		model.addAttribute("memberList",memberList);
 		return model;
 	}
+	
 	
 	@RequestMapping("memberView")
 	public ModelMap memberView(String mem_id, Map<String,String> params
@@ -68,4 +74,18 @@ public class MemberController {
 		String message = URLEncoder.encode("탈퇴처리 되었습니다.","utf-8");
 		return "redirect:/user/join/loginForm.do?message="+message;
 	}
+	
+	@RequestMapping("memberForm")
+	public void memberForm(){}
+	
+	@RequestMapping("insertMemberInfo")
+	public String insertMember(MemberVO memberInfo, @RequestBody String totalParams) throws Exception{
+		System.out.println("@RequestBody : " + totalParams);
+		//this.service.insertMemberInfo(memberInfo);
+		String message = this.accessor.getMessage("cop.regist.msg.confirm",Locale.KOREA);
+		message = URLEncoder.encode(message,"utf-8");
+		return "redirect:/user/join/loginForm.do?message="+message;
+		
+	}
+	
 }

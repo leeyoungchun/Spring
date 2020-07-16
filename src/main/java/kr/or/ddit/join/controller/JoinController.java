@@ -3,6 +3,7 @@ package kr.or.ddit.join.controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.vo.MemberVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,8 +25,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user/join/")
 public class JoinController {
-@Autowired
-private IMemberService service;
+	@Autowired
+	private MessageSourceAccessor accessor;
+	
+	
+	@Autowired
+	private IMemberService service;
 	
 	@RequestMapping("loginForm")
 	public void loginForm(){
@@ -48,7 +54,8 @@ private IMemberService service;
 		
 		if(memberInfo == null){
 			// 리다이렉트(컨텍스트루트|패스 생략)
-			String message = URLEncoder.encode("회원이 아닙니다.","utf-8");
+			String message = this.accessor.getMessage("fail.common.join", Locale.KOREA);
+			message = URLEncoder.encode(message,"utf-8");
 			return "redirect:/user/join/loginForm.do?message="+message;
 		}else{
 			// 포워드(컨텍스트루트|패스 생략)
@@ -59,7 +66,8 @@ private IMemberService service;
 	
 	@RequestMapping("logOut")
 	public String logOut(HttpSession session) throws Exception{
-		String message = URLEncoder.encode("로그아웃 되었습니다.","utf-8");
+		String message = this.accessor.getMessage("success.common.logout",Locale.KOREA);
+		message = URLEncoder.encode(message,"utf-8");
 		session.invalidate();
 		return "redirect:/user/join/loginForm.do?message="+message;
 	}
