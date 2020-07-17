@@ -113,31 +113,32 @@
 	</update>
 
 	<insert id="insertFreeboardReply" parameterClass="freeboardVO">
-      <selectKey keyProperty="bo_no" resultClass="String">
-         SELECT FREEBOARD_SEQ.NEXTVAL FROM DUAL
-      </selectKey>
-      INSERT INTO FREEBOARD(BO_NO,
-                        BO_TITLE,
-                        BO_WRITER,
-                        BO_NICKNAME,
-                        BO_PWD,
-                        BO_MAIL,
-                        BO_IP,
-                        BO_CONTENT,
-                        BO_GROUP,
-                        BO_SEQ,
-                        BO_DEPTH)
-               VALUES(#bo_no#,
-                     #bo_title#,
-                     #bo_writer#,
-                     #bo_nickname#,
-                     #bo_pwd#,
-                     #bo_mail#,
-                     #bo_ip#,
-                     #bo_content#,
-                     #bo_group#,
-                     #bo_seq#,
-                     #bo_depth#)
+     		<selectKey keyProperty="bo_no" resultClass="String">
+			SELECT FREEBOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO FREEBOARD(BO_NO,
+		BO_TITLE,
+		BO_WRITER,
+		BO_NICKNAME,
+		BO_PWD,
+		BO_MAIL,
+		BO_IP,
+		BO_CONTENT,
+		BO_GROUP,
+		BO_SEQ,
+		BO_DEPTH)
+		VALUES(#bo_no#,
+		#bo_title#,
+		#bo_writer#,
+		#bo_nickname#,
+		#bo_pwd#,
+		#bo_mail#,
+		#bo_ip#,
+		#bo_content#,
+		#bo_group#,
+		#bo_seq#,
+		#bo_depth#)
+
    </insert>
    
 	<select id="incrementSeq" parameterClass="freeboardVO" resultClass="String">

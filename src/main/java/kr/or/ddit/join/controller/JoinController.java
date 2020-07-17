@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.or.ddit.member.service.IMemberService;
+import kr.or.ddit.utiles.CryptoGenerator;
 import kr.or.ddit.vo.MemberVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,11 @@ public class JoinController {
    public String loginCheck(String mem_id, String mem_pass, 
                         HttpServletRequest request, 
                         HttpSession session, 
-                        HttpServletResponse response)throws Exception{
+                        HttpServletResponse response,
+                        CryptoGenerator crypto)throws Exception{
+	   
+	  mem_id = crypto.decryptRSA(session, mem_id);
+	  mem_pass = crypto.decryptRSA(session, mem_pass);
       Map<String, String> params = new HashMap<String, String>();
       params.put("mem_id", mem_id);
       params.put("mem_pass",mem_pass);
@@ -65,7 +70,7 @@ public class JoinController {
       //리다이렉트(컨텍스트 루트|패스 생략)
       String message =  this.accessor.getMessage("fail.common.join",Locale.KOREA);
       message = URLEncoder.encode(message,"UTF-8");
-      return "redirect:/user/join/loginForm.do?message="+message;
+      return "redirect:/user/freeboard/freeboardList.do?message="+message;
    }else{
       session.setAttribute("LOGIN_MEMBERINFO",memberInfo);
       // 포워드(컨텍스트 루트|패스 생략)
@@ -78,6 +83,6 @@ public class JoinController {
       session.invalidate();
       String message = this.accessor.getMessage("success.common.logout",Locale.KOREA);
       message = URLEncoder.encode(message,"UTF-8");
-      return "redirect:/user/join/loginForm.do?message="+message;
+      return "redirect:/user/freeboard/freeboardList.do?message="+message;
    }
 }

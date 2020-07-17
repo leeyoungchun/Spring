@@ -36,6 +36,11 @@ $(function(){
     $('#deleteBTN').click(function(){
     	location.replace('${pageContext.request.contextPath}/user/freeboard/deleteFreeboard.do?bo_no=${freeboardInfo.bo_no}');
     });
+    
+    $('#replyBTN').click(function(){
+    	location.replace('${pageContext.request.contextPath}/user/freeboard/freeboardReplyForm.do?bo_no=${freeboardInfo.bo_no}');
+    });
+    
     $('form[name=form]').submit(function(){
     	var bo_content = $('#bo_content').summernote('code');
 		$(this).append('<input type="hidden" name ="bo_content" value="'+bo_content+'"/>');
@@ -114,7 +119,6 @@ $(function(){
 	</div>
 	<div class="form-group"> 
 		<div class="col-sm-offset-2 col-sm-10">
-			<button type="button" class="btn btn-success">글쓰기</button>
 			<button type="button" id="deleteBTN" class="btn btn-danger">삭제</button>
 			<button type="button" id="replyBTN" class="btn btn-primary">답글</button>
 			<button type="button" id="listBTN" class="btn btn-info">목록</button>

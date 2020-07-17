@@ -43,6 +43,7 @@ public class FreeboardController {
 		}
 		
 		Map<String, String> publicKeyMap = this.cryptoGen.generatePairKey(session);
+		
 		params = new HashMap<String, String>();
 		params.put("search_keyword", search_keyword);
 		params.put("search_keycode", search_keycode);
@@ -90,7 +91,22 @@ public class FreeboardController {
 		service.updateFreeboard(freeboardInfo);
 		return "redirect:/user/freeboard/freeboardList.do";
 	}
-	
+	@RequestMapping("freeboardReplyForm")
+	public ModelAndView freeboardReplyForm(String bo_no, ModelAndView andView, Map<String,String> params) throws Exception{
+		params.put("bo_no", bo_no);
+		FreeboardVO freeboardInfo = service.freeboardInfo(params);
+		andView.addObject("freeboardInfo",freeboardInfo);
+		andView.setViewName("user/freeboard/freeboardReplyForm");
+		return andView;
+	}
+	@RequestMapping("insertFreeboardReply")
+	public String insertFreeboardReply(FreeboardVO freeboardInfo) throws Exception{
+		System.out.println(freeboardInfo.getBo_depth());
+		System.out.println(freeboardInfo.getBo_group());
+		service.insertFreeboardReply(freeboardInfo);
+		
+		return "redirect:/user/freeboard/freeboardList.do";
+	}
 	
 	
 	

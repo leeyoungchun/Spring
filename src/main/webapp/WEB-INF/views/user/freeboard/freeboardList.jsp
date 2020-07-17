@@ -8,14 +8,18 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 	$(function() {
+		if('${param.message}'.length > 0){
+  			alert('${param.message}');
+  		}
+		
 		$('button[type=button]').click(function() {
 			location.replace('${pageContext.request.contextPath}/user/freeboard/freeboardForm.do');
 		});
+		
 		$('#tbody tr').click(function() {
 			var bo_no = $(this).find('td:eq(0) input').val();
 			$(location).attr('href', '${pageContext.request.contextPath}/user/freeboard/freeboardView.do?bo_no=' + bo_no );
 		});
-		
 
 	})
 </script>

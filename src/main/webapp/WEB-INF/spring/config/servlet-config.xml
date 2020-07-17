@@ -15,7 +15,7 @@
 	 										@Repository - DAO 레이어 내 클래스
 	 										@Component - 기타 클래스 
 	 -->
-	<context:component-scan base-package="kr.or.ddit">
+	<context:component-scan base-package="kr.or.ddit"><!-- 컨트롤러클래스를 다 훑어서 주소값을 찾음 -->
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 </beans>

@@ -47,7 +47,7 @@ public class MemberController {
    
    @RequestMapping("memberList")
    public Model memberList(String search_keycode,
-                     String search_keyword, Map<String, String> params, Model model) throws Exception{
+                     String search_keyword, Map<String, String> params, Model model, String message) throws Exception{
       
       params.put("search_keycode", search_keycode);
       params.put("search_keyword", search_keyword);
@@ -55,8 +55,9 @@ public class MemberController {
       List<MemberVO> memberList = this.service.memberList(params);
       
       //memberList => view resolver => memberList.jsp 전달
+      message = URLEncoder.encode(message,"UTF-8");
       
-      
+      model.addAttribute("message",message);
       model.addAttribute("memberList",memberList);
       return model;
    }

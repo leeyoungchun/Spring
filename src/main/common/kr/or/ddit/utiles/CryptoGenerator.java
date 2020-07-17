@@ -67,7 +67,6 @@ public class CryptoGenerator {
 			String publicExponent = publicKeySpec.getPublicExponent().toString(16);
 			publicKeyMap.put("publicModulus", publicModulus);
 			publicKeyMap.put("publicExponent", publicExponent);
-			
 		} catch (NoSuchAlgorithmException e1) {
 			e1.printStackTrace();
 		} catch (InvalidKeySpecException e2){
