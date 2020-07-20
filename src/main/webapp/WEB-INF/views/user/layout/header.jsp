@@ -157,7 +157,8 @@ $(function(){
     	  rsaObject.setPublic(modulus, exponent);
     	   
     	  var encryptID = rsaObject.encrypt($('input[name=mem_id]').val());
-    	  var encryptPWD = rsaObject.encrypt($('input[name=mem_pass]').val());
+    	  var encryptPWD = rsaObject.encrypt($('input[name=mem_pass]').val()); 
+    	
     	   
     	   
           var $frm = $('<form action="${pageContext.request.contextPath}/user/join/loginCheck.do" method="post"></form>');

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.commons.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.fileitem.dao.FileItemDaoImpl;
 import kr.or.ddit.fileitem.dao.IFileItemDao;
@@ -33,7 +34,7 @@ public class FreeboardServiceImpl implements IFreeboardService {
 	}
 
 	@Override
-	public String insertFreeboard(FreeboardVO freeboardInfo, FileItem[] items)
+	public String insertFreeboard(FreeboardVO freeboardInfo, MultipartFile[] items)
 			throws Exception {
 		String bo_no = null;
 		bo_no = dao.insertFreeboard(freeboardInfo);

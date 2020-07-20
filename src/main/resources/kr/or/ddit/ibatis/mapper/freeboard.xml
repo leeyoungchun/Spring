@@ -4,6 +4,7 @@
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="board">
 	<typeAlias alias = "freeboardVO" type = "kr.or.ddit.vo.FreeboardVO"/>
+	
 	<resultMap class="freeboardVO" id="freeboardResultMap">
 		<result property="bo_no" 		column="bo_no"/>
 		<result property="bo_title" 	column="bo_title"/>

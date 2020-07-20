@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 
@@ -50,7 +51,7 @@ public class JoinController {
    
    //SpringToddler/user/join/loginCheck.do
    //POST 전송방식 : mem_id=a001&mem_pass=asdfasdf
-   @RequestMapping("loginCheck")
+   @RequestMapping(value="loginCheck", method=RequestMethod.POST, params={"mem_id=b001"})
    public String loginCheck(String mem_id, String mem_pass, 
                         HttpServletRequest request, 
                         HttpSession session, 
