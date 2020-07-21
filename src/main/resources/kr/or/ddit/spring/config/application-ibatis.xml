@@ -64,8 +64,17 @@
 	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
 		p:dataSource-ref="dataSource"
 		p:configLocation="classpath:kr/or/ddit/ibatis/config/SqlMapConfig.xml"
-		>	
+		p:useTransactionAwareDataSource="true"
+		p:transactionConfigClass="com.ibatis.sqlmap.engine.transaction.external.ExternalTransactionConfig">
+		<property name="transactionConfigProperties">
+			<props>
+				<prop key="DefaultAutoCommit">false</prop>
+				<prop key="SetAutoCommitAllowed">true</prop>
+			</props>
+		</property>	
 	</bean>
-	
+	<bean id="transactionMGR" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource">
+	</bean>
 	
 </beans>

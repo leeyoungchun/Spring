@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.member.dao.IMemberDao;
 import kr.or.ddit.member.dao.MemberDaoImpl;
@@ -19,6 +21,7 @@ public class MemberServiceImpl implements IMemberService {
 	private IMemberDao dao;
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
 	public MemberVO memberInfo(Map<String, String> params) throws Exception {
 		MemberVO memberInfo = null;
 
@@ -26,6 +29,7 @@ public class MemberServiceImpl implements IMemberService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
 	public List<MemberVO> memberList(Map<String, String> params)
 			throws Exception {
 		List<MemberVO> memberList = null;
@@ -35,6 +39,7 @@ public class MemberServiceImpl implements IMemberService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public void deleteMemberInfo(Map<String, String> params) throws Exception {
 
 		dao.deleteMemberInfo(params);
@@ -42,6 +47,7 @@ public class MemberServiceImpl implements IMemberService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public void updateMemberInfo(MemberVO memberInfo) throws Exception {
 
 		dao.updateMemberInfo(memberInfo);
@@ -49,6 +55,7 @@ public class MemberServiceImpl implements IMemberService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public void insertMemberInfo(MemberVO memberInfo) throws Exception {
 
 		dao.insertMemberInfo(memberInfo);
@@ -56,6 +63,7 @@ public class MemberServiceImpl implements IMemberService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
 	public String totalCount(Map<String, String> params) throws Exception {
 		String totalCount = null;
 

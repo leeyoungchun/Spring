@@ -6,6 +6,8 @@ import java.util.Map;
 import org.apache.commons.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.fileitem.dao.FileItemDaoImpl;
@@ -25,6 +27,7 @@ public class FreeboardServiceImpl implements IFreeboardService {
 	private IFileItemDao fileitemdao;
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 	public List<FreeboardVO> freeboardList(Map<String, String> params)
 			throws Exception {
 		List<FreeboardVO> freeboardList = null;
@@ -34,6 +37,7 @@ public class FreeboardServiceImpl implements IFreeboardService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public String insertFreeboard(FreeboardVO freeboardInfo, MultipartFile[] items)
 			throws Exception {
 		String bo_no = null;
@@ -44,6 +48,7 @@ public class FreeboardServiceImpl implements IFreeboardService {
 		return bo_no;
 	}
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public String insertFreeboard(FreeboardVO freeboardInfo)
 			throws Exception {
 		String bo_no = null;
@@ -53,6 +58,7 @@ public class FreeboardServiceImpl implements IFreeboardService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 	public FreeboardVO freeboardInfo(Map<String, String> params)
 			throws Exception {
 		FreeboardVO freeboardInfo = null;
@@ -62,12 +68,14 @@ public class FreeboardServiceImpl implements IFreeboardService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public void deleteFreeboard(Map<String, String> params) throws Exception {
 		dao.deleteFreeboard(params);
 
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public void updateFreeboard(FreeboardVO freeboardInfo) throws Exception {
 
 		dao.updateFreeboard(freeboardInfo);
@@ -75,6 +83,7 @@ public class FreeboardServiceImpl implements IFreeboardService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Exception.class})
 	public String insertFreeboardReply(FreeboardVO freeboardInfo)
 			throws Exception {
 		String bo_no = null;
@@ -84,6 +93,7 @@ public class FreeboardServiceImpl implements IFreeboardService {
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 	public String totalCount(Map<String, String> params) throws Exception {
 		String totalCount = null;
 
