@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<!-- 
+		aspect : 다수의 빈 등록 클래스들의 공통 관심사에의해 코딩된 코드를 분리시켜 재활용가능한 공통 코드
+		joinpoint : 공통 관심사 코드의 실행이 요구되는 메서드 단위
+		pointcut : 단일 공통 관심사 코드의 실행이 요구되는 joinpoint 패키지 단위
+		advice : 단일 공통 관심사 코드가 실행될 시점
+		weaving : 공통 관심사 코드의 실행
+		advisor : advice + pointcut
+	 -->
+	 <aop:config proxy-target-class="true">
+	 	<aop:pointcut id="theWholeMethodPC" expression="execution(* kr.or.ddit..*.*(..))" />
+	 	<aop:aspect ref="logPrintClazz">
+	 		<aop:before method="theWholeJoinpointCallBefore"
+	 		  			pointcut-ref="theWholeMethodPC"/>
+	 		<aop:after method="theWholeJoinpointCallAfter"
+	 		  			pointcut-ref="theWholeMethodPC"/>
+	 		<aop:after-throwing method="theWholeJoinpointCallThrowing"
+	 		  			pointcut-ref="theWholeMethodPC"
+	 		  			throwing="ex"/>
+	 		<aop:around method="theWholeJoinpointCallAround"
+	 		  			pointcut-ref="theWholeMethodPC"/>
+	 	</aop:aspect>
+	 </aop:config>
+	 
+</beans>

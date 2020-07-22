@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kr.or.ddit.aop.Loggable;
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.utiles.CryptoGenerator;
 import kr.or.ddit.vo.MemberVO;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,9 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 @Controller
 @RequestMapping("/user/join/")
 public class JoinController {
-   
+	/*@Loggable
+	private Logger logger;*/
+	
    @Autowired
    private MessageSourceAccessor accessor;
    @Autowired
@@ -51,7 +55,7 @@ public class JoinController {
    
    //SpringToddler/user/join/loginCheck.do
    //POST 전송방식 : mem_id=a001&mem_pass=asdfasdf
-   @RequestMapping(value="loginCheck", method=RequestMethod.POST, params={"mem_id=b001"})
+   @RequestMapping(value="loginCheck", method=RequestMethod.POST)
    public String loginCheck(String mem_id, String mem_pass, 
                         HttpServletRequest request, 
                         HttpSession session, 

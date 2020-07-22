@@ -15,6 +15,7 @@ public class TimeCheckJob extends QuartzJobBean {
 			throws JobExecutionException {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd kk:mm:ss");
 		System.out.println("timeCheckJob : " + sdf.format(new Date()));
+		
 	}
 
 }

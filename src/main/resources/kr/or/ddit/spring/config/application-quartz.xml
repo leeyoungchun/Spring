@@ -24,6 +24,6 @@
 				<ref bean="timeCheckTrigger"/>
 			</list>
 		</property>
-<!-- 		<property name="autoStartup" value="false"></property> -->
+		<property name="autoStartup" value="false"></property>
 	</bean>
 </beans>

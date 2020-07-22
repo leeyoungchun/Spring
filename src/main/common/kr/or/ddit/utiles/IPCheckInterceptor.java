@@ -26,7 +26,7 @@ public class IPCheckInterceptor extends HandlerInterceptorAdapter {
       ipMap = new HashMap<String, String>();
       ipMap.put("127.0.0.1", "A");
       ipMap.put("0:0:0:0:0:0:0:1", "A");
-      ipMap.put("192.168.206.24", "A");
+      ipMap.put("192.168.206.16", "A");
       ipMap.put("192.168.206.23","F");
    }
    
